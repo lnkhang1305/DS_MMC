@@ -1,0 +1,6 @@
+admin,admin,0
+nkhangg,1234,101000
+nkhanggg,1234,10000
+nkhangggg,1234,10000
+nkhanggggg,1234,199999
+pdung,1234,1000
