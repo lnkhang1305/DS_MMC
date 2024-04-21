@@ -1,0 +1,8 @@
+PATH1 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class1.txt'
+PATH2 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class2.txt'
+PATH3 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class3.txt'
+PATH4 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class4.txt'
+PATH5 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class5.txt'
+PATH6 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class6.txt'
+PATH7 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class7.txt'
+PATH8 = r'C:\Users\thuan\OneDrive\Máy tính\FinalProject1\Data Files\class8.txt'
