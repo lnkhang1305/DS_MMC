@@ -1,4 +1,4 @@
--- Active: 1714637042800@@127.0.0.1@3306@testing_system_db
+-- Active: 1715395058611@@127.0.0.1@3306@testing_system_db
 DROP DATABASE IF EXISTS Testing_System_Db;
 /*============================== CREATE TABLE=== =======================================*/
 /*======================================================================================*/
@@ -23,9 +23,7 @@ CREATE TABLE Account (
     DepartmentID                TINYINT UNSIGNED,
     PositionID                  INT,
     CreateDate                  DATETIME DEFAULT NOW(),
-    CONSTRAINT fk_department_id
-    FOREIGN KEY (DepartmentID) 
-    REFERENCES Department (DepartmentID)
+    CONSTRAINT fk_department_id FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID) ON DELETE CASCADE
 );
 DROP TABLE IF EXISTS `Group`;
 CREATE TABLE `Group` (
@@ -40,8 +38,8 @@ CREATE TABLE GroupAccount (
     AccountID                   INT UNSIGNED,
     JoinDate                    DATE
 );
-ALTER TABLE GroupAccount ADD CONSTRAINT fk_Group_GroupID FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID);
-ALTER TABLE GroupAccount ADD CONSTRAINT fk_Group_AccountID FOREIGN KEY (AccountID) REFERENCES Account(AccountID);
+ALTER TABLE GroupAccount ADD CONSTRAINT fk_Group_GroupID FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID) ON DELETE CASCADE;
+ALTER TABLE GroupAccount ADD CONSTRAINT fk_Group_AccountID FOREIGN KEY (AccountID) REFERENCES Account(AccountID) ON DELETE CASCADE;
 DROP TABLE IF EXISTS TypeQuestion;
 CREATE TABLE TypeQuestion (
     TypeID                      INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -60,8 +58,8 @@ CREATE TABLE Question (
     TypeID                      INT UNSIGNED,
     CreatorID                   INT,
     CreateDate                  DATETIME DEFAULT NOW(),
-    CONSTRAINT fk_category_id FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID),
-    CONSTRAINT fk_type_id FOREIGN KEY (TypeID) REFERENCES TypeQuestion (TypeID)
+    CONSTRAINT fk_category_id FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID) ON DELETE CASCADE,
+    CONSTRAINT fk_type_id FOREIGN KEY (TypeID) REFERENCES TypeQuestion (TypeID) ON DELETE CASCADE
 );
 DROP TABLE IF EXISTS Answer;
 CREATE TABLE Answer (
@@ -69,7 +67,7 @@ CREATE TABLE Answer (
     Content                     VARCHAR(500),
     QuestionID                  INT UNSIGNED,
     isCorrect                   BIT DEFAULT 1,
-    CONSTRAINT fk_question_id FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID)
+    CONSTRAINT fk_question_id FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID) ON DELETE CASCADE
 );
 DROP TABLE IF EXISTS Exam;
 CREATE TABLE Exam (
@@ -80,7 +78,7 @@ CREATE TABLE Exam (
     Duration                    INT,
     CreatorID                   INT,
     CreateDate                  DATETIME DEFAULT NOW(),
-    CONSTRAINT fk_category_id_exam FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID)
+    CONSTRAINT fk_category_id_exam FOREIGN KEY (CategoryID) REFERENCES CategoryQuestion (CategoryID) ON DELETE CASCADE
 );
 CREATE TABLE ExamQuestion (
     ExamID                      INT UNSIGNED,
@@ -116,7 +114,7 @@ VALUES
 -- Add data Account
 INSERT INTO `Account`(Email								, Username			, FullName				, DepartmentID	, PositionID, CreateDate)
 VALUES 				('haidang29productions@gmail.com'	, 'dangblack'		,'Nguyễn hải Đăng'		,   '5'			,   '1'		,'2020-03-05'),
-					('account1@gmail.com'				, 'quanganh'		,'Nguyen Chien Thang2'		,   '1'			,   '2'		,'2020-03-05'),
+					('account1@gmail.com'				, 'quanganh'		,'Nguyen Chien Thang2'	,   '2'			,   '2'		,'2020-03-05'),
                     ('account2@gmail.com'				, 'vanchien'		,'Nguyen Van Chien'		,   '2'			,   '3'		,'2020-03-07'),
                     ('account3@gmail.com'				, 'cocoduongqua'	,'Duong Do'				,   '3'			,   '4'		,'2020-03-08'),
                     ('account4@gmail.com'				, 'doccocaubai'		,'Nguyen Chien Thang1'	,   '4'			,   '4'		,'2020-03-10'),
@@ -137,8 +135,8 @@ VALUES 				(N'Testing System'		,   5			,'2019-03-05'),
                     (N'VTI Marketing 01'	,   7			,'2020-04-07'),
                     (N'Management'			,   8			,'2020-04-08'),
                     (N'Chat with love'		,   9			,'2020-04-09'),
-                    (N'Vi Ti Ai'			,   10			,'2020-04-10');
-
+                    (N'Vi Ti Ai'			,   10			,'2020-04-10'),
+                    (N'Backup'              ,   3           ,'2019-12-19');
 -- Add data GroupAccount
 INSERT INTO `GroupAccount`	(  GroupID	, AccountID	, JoinDate	 )
 VALUES 						(	1		,    1		,'2019-03-05'),
@@ -174,7 +172,7 @@ VALUES 								('Java'			),
 													
 -- Add data Question
 INSERT INTO Question	(Content			, CategoryID, TypeID		, CreatorID	, CreateDate )
-VALUES 					(N'Câu hỏi về Java Câu hỏi về Java Câu hỏi về Java Câu hỏi về Java'	,	1		,   '1'			,   '2'		,'2020-04-05'),
+VALUES 					(N'Câu hỏi về Java ',	1		,   '1'			,   '2'		,'2020-04-05'),
 						(N'Câu Hỏi về PHP'	,	10		,   '2'			,   '2'		,'2020-04-05'),
 						(N'Hỏi về C#'		,	9		,   '2'			,   '3'		,'2020-04-06'),
 						(N'Hỏi về Ruby'		,	6		,   '1'			,   '4'		,'2020-04-06'),
