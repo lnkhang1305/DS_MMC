@@ -97,6 +97,19 @@ VALUES 					(N'Câu hỏi về Java ',	1		,   '1'			,   '2'		,'2020-04-05'),
 						(N'Hỏi về C++'		,	8		,   '1'			,   '8'		,'2020-04-07'),
 						(N'Hỏi về SQL'		,	4		,   '2'			,   '9'		,'2020-04-07'),
 						(N'Hỏi về Python'	,	7		,   '1'			,   '10'	,'2020-04-07');
+UPDATE 		Question 
+SET			Content = 'Câu hỏi về Java'
+WHERE		QuestionID = 1;
+
+UPDATE		question
+SET			CreatorID = '1'
+WHERE		QuestionID = 1;
+
+INSERT INTO question	(`Content`			, CategoryID, TypeID		, CreatorID , CreateDate)
+VALUES					(N'Đây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dài',	2		,   '1'			,   '7'		,'2020-04-06');
+INSERT INTO question	(`Content`			, CategoryID, TypeID		, CreatorID , CreateDate)
+VALUES					(N'Đây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dàiĐây là một câu hỏi cực kì dài',	2		,   '1'			,   '7'		,'2020-04-06');
+
 INSERT INTO question	(Content			, CategoryID, TypeID		,`CreatorID`,`CreateDate`)
 VALUES					(N'Câu hỏi về DS'	,	8		,	'1'			,	'3'		,'2020-04-07');	
 -- Add data Answers

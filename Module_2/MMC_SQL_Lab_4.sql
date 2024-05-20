@@ -92,7 +92,7 @@ HAVING      COUNT(A.AccountID) =
 ---Question 11: Thống kê mỗi phòng ban có bao nhiêu dev, test, scrum master, PM
 SELECT      SLPB.PB, P.PositionName, COUNT(SLPB.AccountID)
 FROM        position P
-INNER JOIN
+LEFT JOIN
             (SELECT      A.*, P.DepartmentName AS 'PB'
             FROM        department P 
             LEFT JOIN   account A ON P.DepartmentID = A.DepartmentID) AS SLPB
